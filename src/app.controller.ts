@@ -17,7 +17,7 @@ export class AppController {
     const ipData = await this.httpService
       .get(`http://ip-api.com/json/24.48.0.1`)
       .toPromise();
-    return ipData.data;
+    return { ip: myIp };
     // return this.appService.getHello();
   }
 }
