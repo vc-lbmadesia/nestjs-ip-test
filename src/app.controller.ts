@@ -14,10 +14,11 @@ export class AppController {
   @Get()
   async getHello(@Req() request: Request, @Ip() myIp: string): Promise<any> {
     console.log(myIp);
+    const remoteAdd = request.socket.remoteAddress;
     const ipData = await this.httpService
       .get(`http://ip-api.com/json/24.48.0.1`)
       .toPromise();
-    return { ip: myIp };
+    return { ip: remoteAdd };
     // return this.appService.getHello();
   }
 }
